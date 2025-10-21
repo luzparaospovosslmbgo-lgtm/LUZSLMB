@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Uma palavra pra você ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap');
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      background: radial-gradient(circle at top, #2c2c2c 0%, #0f0f0f 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      top: 40%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(60px);
+    }
+
+    .card {
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      z-index: 2;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #666;
+      margin: 0 0 12px;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      line-height: 1.4;
+      margin: 0 0 18px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    p::after {
+      content: " 💛";
+      font-size: 26px;
+    }
+
+    small {
+      color: #777;
+      font-size: 15px;
+    }
+
+    .logo {
+      width: 160px;
+      max-width: 40%;
+      margin-top: 24px;
+      z-index: 2;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.25));
+      animation: fadeIn 1.5s ease forwards;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      box-shadow: 0 14px 45px rgba(255, 215, 0, 0.25);
+      transform: translateY(-4px);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <div class="card">
+    <h1>Uma palavra pra você</h1>
+    <p id="frase">…</p>
+    <div style="margin-top:12px">
+      <small>Compartilhe com alguém hoje 💛</small>
+    </div>
+  </div>
+
+  <!-- Logo posicionada fora da box, abaixo -->
+  <img src="logo.png" alt="Logo Luz para os Povos" class="logo" />
+
+  <script>
+    const FRASES = [
+      "“Não desista! Deus quer te ensinar no processo!”",
+      "“Você não está sozinho!”",
+      "“Se envolva, seguir a Cristo é estar junto ao corpo.”",
+      "“O amor nunca falha.” (1 Coríntios 13:8)"
+    ];
+
+    function sortear() {
+      const i = Math.floor(Math.random() * FRASES.length);
+      document.getElementById('frase').textContent = FRASES[i];
+    }
+
+    sortear();
+  </script>
+</body>
+</html>
